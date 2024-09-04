@@ -1,21 +1,23 @@
 <?php
 // Add CORS headers to allow requests from your frontend
 header("Access-Control-Allow-Origin: https://my-frontend-fg14.onrender.com"); // Replace with your actual frontend URL
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allow specific methods
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Allow specific headers
 header("Access-Control-Allow-Credentials: true"); // If credentials like cookies are required
 
-// Handle preflight requests (OPTIONS method)
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-  http_response_code(204); // Preflight request is successful
-  exit;
+// Handle preflight OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204); // Preflight request is successful
+    exit;
 }
+
+// Existing backend logic for handling the POST request
+$input = file_get_contents('php://input');
+$data = json_decode($input, true);
 
 // Existing backend logic for Google OAuth validation goes here
 
 // Example: Get the incoming request payload and validate the token
-$input = file_get_contents('php://input');
-$data = json_decode($input, true);
 
 // Your token validation logic
 if (isset($data['credential'])) {
