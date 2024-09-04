@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: https://my-frontend-fg14.onrender.com/"); // Replace with your frontend URL
+header("Access-Control-Allow-Origin: https://my-frontend-fg14.onrender.com"); // Replace with your frontend URL
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
